@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 body{
     background-image: linear-gradient(120deg , #c09e2d, #320faf);
@@ -47,8 +48,10 @@ form button:hover{
     font-size: 1.5rem;
     display:flex;
     justify-content: space-between;
+    align-items: center;
     transition: all 0.5s ease;
 }
+
 .todo li{
     flex: 1;
 }
@@ -70,12 +73,12 @@ form button:hover{
 .completed{
     text-decoration: line-through;
     opacity: 0.5;
+    color: red;
     
 }
-.fall{
-    background-color: rgb(118, 156, 124);
-    transform: translateZ(8rem) rotateY(10deg);
-    opacity: 1;
+.fall{ 
+    transform: translateY(8rem) rotateZ(20deg);
+    opacity: 0;
 }
 
 .container-time{
@@ -85,4 +88,37 @@ form button:hover{
     position: relative;
     left:40%;
 
+}
+/*styling filter*/
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+}
+.select{
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+select{
+    color: #ff6f47;
+    width: 10rem;
+    cursor: pointer;
+    padding: 1rem;
+}
+.select::after{
+    content: "\25BC";
+    position: absolute;
+    background: #ff6f47;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    pointer-events: none;
+
+}
+.select:hover::after{
+    background: white;
+    color: #ff6f47;
 }
