@@ -3,13 +3,13 @@
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
-const filterOption = document.querySelector(".filter-todo");
+
 
 //Event listeners
 document.addEventListener("DOMContentLoaded",getTodos);
 todoButton.addEventListener("click",addTodo);
 todoList.addEventListener("click",deleteCheck);
-filterOption.addEventListener("click",filterTodo);
+
 
 //Functions
 
@@ -72,6 +72,9 @@ function displayTime(){
    var min = dateTime.getMinutes();
    var sec = dateTime.getSeconds();
    let day = dateTime.getDay();
+   function padZero(number) {
+      return number < 10 ? '0' + number : number.toString();
+    }
    var session = document.getElementById('session');
    if(hrs >=12){
       document.getElementById("session").innerHTML ="PM";
@@ -79,9 +82,9 @@ function displayTime(){
    else{
       document.getElementById("session").innerHTML ="AM";
    }
-   document.getElementById("hours").innerHTML = hrs;
-   document.getElementById("minutes").innerHTML = min;
-   document.getElementById("seconds").innerHTML =sec;
+   document.getElementById("hours").innerHTML = padZero(hrs);
+   document.getElementById("minutes").innerHTML = padZero(min);
+   document.getElementById("seconds").innerHTML = padZero(sec);
    switch(day){
       case 0:
          document.getElementById("day").innerHTML = "Sunday";
@@ -112,38 +115,7 @@ function displayTime(){
 
 setInterval(displayTime, 10);
 // filter function
-function filterTodo(e){
-     const todos = todoList.childNodes;
-     console.log(todos);
-     
-     
-   todos.forEach(function(todo,index){
-      switch(e.target.value){
-            case "all":
-               todos[index].style.display = "flex";
-               break;
-            case "completed":
-               if(todos[index].classList.contains("completed")){
-                  todos[index].style.display = "flex";
-                  
 
-               }
-               else{
-                  todos[index].style.display = "none";
-               }
-               break;
-            case "uncompleted":
-                if(!todos[index].classList.contains("completed")){
-                  todos[index].style.display = "flex";
-                }
-            else{
-               todos[index].style.display = "none";
-            }             
-             break;    
-         } 
-        
-     }); 
-}
 
 function saveLocalTodos(todo){
     //check 
